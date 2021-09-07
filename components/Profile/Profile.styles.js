@@ -1,0 +1,60 @@
+import {StyleSheet} from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems:"center",
+    flexDirection: 'column',
+    flexGrow: 1,
+    backgroundColor:"white"
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: '600',
+    paddingTop: 30,
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: '500',
+    padding: 0,
+    marginBottom: 20,
+  },
+  logo: {
+    width: 150,
+    height: 150,
+    marginTop:20,
+  },
+  info_block: {
+    width:"90%",
+    marginBottom:20
+  },
+  row: {
+      backgroundColor:"#f4f4f4",
+      padding:5,
+      display:"flex",
+      justifyContent: 'space-between',
+      flexDirection: "row",
+      borderRadius:10,
+      marginBottom:10
+  },
+
+  row_title: {
+      fontWeight:"600",
+      fontSize:18
+  },
+  row_description: {
+    fontSize:18
+  },
+  btn: {
+    marginBottom: 12,
+    padding: 15,
+    borderRadius: 15,
+    width: '90%',
+    backgroundColor: '#5DB075',
+    alignItems: 'center',
+  },
+  btnText: {
+    color: '#fff',
+  },
+});
+
+export default styles;
