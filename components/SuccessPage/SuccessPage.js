@@ -16,9 +16,9 @@ const SuccessPage = ({navigation,route}) => {
                 <Text style={styles.text}>{route.params.employeeName}</Text>
                 <TouchableOpacity
                     style={styles.btn}
-                    onPress={() => navigation.navigate("Profile")}
+                    onPress={() => {navigation.navigate("QrScreen") }}
                 >
-                <Text style={{color:"white"}} onPress={()=>{navigation.navigate("Profile")}} >Закрыть</Text>
+                    <Text style={{color:"white"}}  >Закрыть</Text>
                 </TouchableOpacity>
             </View>
         </View>

@@ -13,6 +13,7 @@ const LoadingPage = ({navigation}) => {
   return(
     <>
     <View style={styles.container}>
+        <Image style={styles.gif}source={require('./../../assets/PreloadGif.gif')}/>
         <Text>Загружаем данные...</Text>
     </View>
     </>

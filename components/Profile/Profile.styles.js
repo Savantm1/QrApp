@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 150,
     height: 150,
-    marginTop:20,
+    marginTop:40,
   },
   info_block: {
     width:"90%",

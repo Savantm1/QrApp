@@ -10,11 +10,11 @@ import { useSelector } from 'react-redux';
 
 const QrScreen = ({navigation}) => {
 
-    const uid = useSelector(state => state.auth.uid)
+    const uid = useSelector(state => state.auth.personData.uid);
+    const EmployeeName = useSelector(state => state.auth.personData.employeeName);
     let onSuccess = async (e) => {
         try {
             let link = `${e.data}?uid=${uid}`;
-            console.log("onFetch",link)
             let response = await fetch(link,{
                 method: 'GET'
             })
@@ -22,7 +22,7 @@ const QrScreen = ({navigation}) => {
             await navigation.navigate({
                 name: "SuccessPage",
                 params: {
-                    ...personData
+                    ...personData,
                 }
             });
 
@@ -40,24 +40,17 @@ const QrScreen = ({navigation}) => {
         onRead={onSuccess}
         topContent={
           <Text style={styles.centerText}>
-              Наведите устройство на QR-код
-
+              {EmployeeName}
           </Text>
         }
-        // bottomContent={
-        //   <TouchableOpacity style={styles.buttonTouchable}>
-        //     <Text style={styles.buttonText}>Сделать снимок</Text>
-        //   </TouchableOpacity>
-        // }
+        bottomContent={
+            <Text style={styles.bottomText}>
+                Наведите устройство на QR-код
+            </Text>
+        }
       /> 
     );
 }
-
-
-
-
-
-
 
   const QRStack = createNativeStackNavigator();
 

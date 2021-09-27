@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Authentification.styles.js';
 import {TouchableOpacity, Text, View, TextInput, Alert} from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Authorization, getProfileData } from '../../Redux/AuthReducer'
 import API from '../../API.js';
 import { getUniqueId } from 'react-native-device-info';
@@ -26,6 +26,7 @@ const Authentification = ({navigation}) => {
     let stringVal = value.toString()
     if(stringVal.length === 5) {
       let  name =  await API.getPersonName(value);
+
       setPersonName(name);
     }
   }
@@ -48,7 +49,7 @@ const Authentification = ({navigation}) => {
             title:result.title
           }
         })
-        console.log("res",uniqueObject)
+
       } else {
         dispatch(Authorization({result,userId}));
       }
@@ -68,6 +69,7 @@ const Authentification = ({navigation}) => {
       <TextInput
         style={styles.input}
         placeholder="UID"
+        placeholderTextColor="#777"
         keyboardType="numeric"
         maxLength={5}
         onChangeText={(evt)=>{ setUserId(evt);getName(evt)}}
@@ -76,6 +78,7 @@ const Authentification = ({navigation}) => {
       <TextInput
         style={styles.input}
         placeholder="Повторите UID"
+        placeholderTextColor="#777"
         keyboardType="numeric"
         maxLength={5}
         onChangeText={(evt)=> {setRepeatUserId(evt)}}

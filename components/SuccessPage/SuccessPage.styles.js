@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         textAlign:"center"
     },
     text: {
-        fontSize:20
+        fontSize:20,
+        textAlign:"center"
     },
     btn: {
         margin: 12,

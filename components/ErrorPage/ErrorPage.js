@@ -12,7 +12,6 @@ import styles from "./ErrorPage.styles";
 const ErrorPage = ({navigation,route}) => {
     let message = route.params.message ? route.params.message : "Ошибка"
     let title = route.params.title ? route.params.title : ""
-    console.log("Message",message)
   return(
     <>
         <View style={styles.container}>

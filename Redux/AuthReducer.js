@@ -12,41 +12,46 @@ export const getProfileData = createAsyncThunk(
 export const authSlice = createSlice({
     name: "person",
     initialState: {
-        uid:"",
         status:0,
+        networkStatus:false,
         errorMessage:"",
         personData:{
+            uid:"",
             name:''
         }
     },
     reducers: {
 
         Hydrate (state,action) {
-            console.log("HYDRATE payload:",action)
-            state.uid = action.payload.uid;
+            state.personData = action.payload.personData;
             state.status = action.payload.status;
         },
         Authorization(state,action) {
-            console.log("authorization reducer",action.payload);
-            state.uid = action.payload.userId;
+
+            state.personData.uid = action.payload.userId;
             state.status = action.payload.result.status;
-            console.log("state after authorization",state)
+
+        },
+        ChangeNetworkStatus(state,action) {
+
+            state.networkStatus = action.payload;
         }
 
     },
     extraReducers: {
         [getProfileData.fulfilled]: (state, action) => {
-            console.log("extrared",action)
-            if(action.payload.employeeName){
-                state.uid= action.meta.arg.uid;
-                state.personData = action.payload;
+
+            if(action.payload.person_data.employeeName){
+                state.personData.uid= action.meta.arg.uid;
+                state.personData = action.payload.person_data;
+                state.legend = action.payload.legend;
                 state.status = true;
             }else {
-                state.errorMessage = action.payload.message
+                state.errorMessage = action.payload.message;
             }
           },
     }
 })
 
-export const {Authorization, Hydrate} = authSlice.actions;
+export const {Authorization, Hydrate,ChangeNetworkStatus} = authSlice.actions;
 export default authSlice.reducer;  

@@ -9,19 +9,19 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 import AuthentificationStackScreen from '../Authentification/Authentification';
 import { getUniqueId } from 'react-native-device-info';
 import API from '../../API';
+import HistoryPage from '../HistoryPage/HistoryPage';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function NavTabs() {
   
-
   const status  = useSelector(state => state.auth.status);   
   let content;
-  console.log("status on navtabs", status)
+ 
   if(status === 0){
     content = <Stack.Navigator initialRouteName="Loading" screenOptions={{headerShown:false}} >
-                  <Stack.Screen name="Loading" component={LoadingPage}/> 
+                <Stack.Screen name="Loading" component={LoadingPage}/> 
               </Stack.Navigator>
   }else if(status === true) {
     content = <Tab.Navigator screenOptions={{headerShown:false,
@@ -36,7 +36,12 @@ function NavTabs() {
                 options={{      
                   tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="account" color={color} size={size} />
-                ),}} />
+                    ),}} />
+                    <Tab.Screen name="History" component={HistoryPage}
+                    options={{         
+                      tabBarIcon: ({ color, size }) => (
+                        <MaterialCommunityIcons name="history" color={color} size={size} />
+                        ),}} />
               </Tab.Navigator>
   } else if( status === false) {
     content = <Stack.Navigator  screenOptions={{headerShown:false}} >
@@ -52,22 +57,3 @@ function NavTabs() {
 }
 
 export default NavTabs;
-
-
-{/* 
-      <Tab.Screen name="QR" component={QRStackScreen}
-        options={{         
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="qrcode-scan" color={color} size={size} />
-        ),}} />
-      <Tab.Screen name="Authentification" component={Authentification}
-        options={{      
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
-        ),}}
-      />
-      <Tab.Screen name="Profile" component={Profile}
-        options={{      
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
-        ),}} /> */}
