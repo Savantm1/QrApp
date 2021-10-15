@@ -32,7 +32,7 @@ const ModalComponent = (props) => {
         transparent={true}
         visible={props.modalVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
+          // Alert.alert("Modal has been closed.");
           props.setModalVisible(!props.modalVisible);
         }}
       >

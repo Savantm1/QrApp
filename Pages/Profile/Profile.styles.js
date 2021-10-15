@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { border, borderWidth } from 'styled-system';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,10 +8,45 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor:"white"
   },
+  container_center: {
+    paddingTop:30,
+    alignItems:"center",
+    flexDirection: 'column',
+    height:"100%",
+    justifyContent:"center"
+},
+  refresh_container: {
+    display:"flex",
+    justifyContent:"flex-end",
+    flexDirection:"row",
+    marginTop:20,
+    marginRight:30,
+    width: "100%"
+  },
   title: {
     fontSize: 30,
     fontWeight: '600',
     paddingTop: 30,
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center"
+  },
+  select: {
+    backgroundColor:"#5DB075",
+    padding:5,
+    borderRadius:5,
+    display:"flex",
+    flexDirection:"row",
+  },
+  select_text: {
+    fontSize:18,
+    color: "white"
+
+  },
+  select_container: {
+    width:1,
+    height:1,
+    overflow:"hidden"
   },
   subtitle: {
     fontSize: 20,
@@ -36,6 +72,12 @@ const styles = StyleSheet.create({
       borderRadius:10,
       marginBottom:10
   },
+  row_selector : {
+    display:"flex",
+    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems:"center"
+  },
 
   row_title: {
       fontWeight:"600",
@@ -50,11 +92,14 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: '90%',
     backgroundColor: '#5DB075',
+    color:"white",
     alignItems: 'center',
   },
   btnText: {
     color: '#fff',
   },
+
+
 });
 
 export default styles;

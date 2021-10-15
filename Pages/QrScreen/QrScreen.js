@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component, useState} from 'react';
-import { Text } from 'react-native';
+import { Alert, Text } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -27,7 +27,7 @@ const QrScreen = ({navigation}) => {
             });
 
         } catch (error) {
-            console.log("error",error)
+            Alert.alert("Ошибка", error.toString());
         }
     };
 

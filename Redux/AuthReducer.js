@@ -8,8 +8,14 @@ export const getProfileData = createAsyncThunk(
     }
 )
 
-
+export const getHoursPerMonth = createAsyncThunk(
+    "person/Hours",
+    async(data) => {
+        return await API.getHoursPerMonth(data)
+    }
+)
 export const authSlice = createSlice({
+    loading:false,
     name: "person",
     initialState: {
         status:0,
@@ -40,6 +46,7 @@ export const authSlice = createSlice({
     },
     extraReducers: {
         [getProfileData.fulfilled]: (state, action) => {
+            state.loading = false;
 
             if(action.payload.person_data.employeeName){
                 state.personData.uid= action.meta.arg.uid;
@@ -50,6 +57,18 @@ export const authSlice = createSlice({
                 state.errorMessage = action.payload.message;
             }
           },
+          [getProfileData.pending]: (state, action) => {
+            state.loading = true;
+          },
+        [getHoursPerMonth.fulfilled]: (state,action) => {
+            state.loading = false;
+            state.personData.totalTime = action.payload.totalTime;
+            state.personData.status = action.payload.status;
+        },
+        [getHoursPerMonth.pending]: (state,action) => {
+            state.loading = true;
+        }
+        
     }
 })
 

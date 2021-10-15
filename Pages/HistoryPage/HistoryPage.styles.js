@@ -7,6 +7,13 @@ import { StyleSheet } from "react-native";
         flexDirection: 'column',
         flexGrow: 1,
     },
+    container_center: {
+        paddingTop:30,
+        alignItems:"center",
+        flexDirection: 'column',
+        height:"100%",
+        justifyContent:"center"
+    },
     title: {
         fontSize: 20,
         textAlign:"center",

@@ -1,15 +1,14 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
-import Profile from '../Profile/Profile';
-import QRStackScreen from '../QrScreen/QrScreen';
+import Profile from '../../Pages/Profile/Profile';
+import QRStackScreen from '../../Pages/QrScreen/QrScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoadingPage from '../LoadingPage/LoadingPage';
-import AuthentificationStackScreen from '../Authentification/Authentification';
-import { getUniqueId } from 'react-native-device-info';
-import API from '../../API';
-import HistoryPage from '../HistoryPage/HistoryPage';
+import LoadingPage from '../../Pages/LoadingPage/LoadingPage';
+import AuthentificationStackScreen from '../../Pages/Authentification/Authentification';
+import HistoryPage from '../../Pages/HistoryPage/HistoryPage';
+import InstructionsPage from '../../Pages/InstructionsPage/InstructionsPage';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -37,11 +36,16 @@ function NavTabs() {
                   tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="account" color={color} size={size} />
                     ),}} />
-                    <Tab.Screen name="History" component={HistoryPage}
-                    options={{         
-                      tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="history" color={color} size={size} />
-                        ),}} />
+                <Tab.Screen name="History" component={HistoryPage}
+                options={{         
+                  tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="history" color={color} size={size} />
+                    ),}} />
+                <Tab.Screen name="Information" component={InstructionsPage}
+                options={{         
+                  tabBarIcon: ({ color, size }) => (
+                    <MaterialCommunityIcons name="information" color={color} size={size} />
+                    ),}} />
               </Tab.Navigator>
   } else if( status === false) {
     content = <Stack.Navigator  screenOptions={{headerShown:false}} >

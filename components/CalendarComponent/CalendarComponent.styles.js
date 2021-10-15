@@ -48,10 +48,8 @@ const styles = StyleSheet.create({
         flex:1,
       },
       calendar_container: {
-
           width:"100%",
           flex:1
-
       },
 
     send_btn: {
