@@ -18,13 +18,15 @@ const InstructionsPage = (props) => {
         // by some browser in the mobile
         await Linking.openURL(url);
       } else {
-        // Alert.alert(`Don't know how to open this URL: ${url}`);
+        Alert.alert(`Don't know how to open this URL: ${url}`);
       }
     }, [url]);
 
     return (
       <View style={styles.link}>
-        <Button title={children} color="#5DB075" onPress={handlePress} />
+        <TouchableOpacity  onPress={handlePress}>
+          <Text style={styles.link_text}>{children}</Text>
+          </TouchableOpacity>
       </View>
     )
   }

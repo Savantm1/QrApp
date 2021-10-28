@@ -22,11 +22,17 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     link: {
-        backgroundColor: "red",
+        backgroundColor: "#5db075",
         borderRadius: 30,
         overflow: "hidden",
+        padding:12,
         marginBottom: 20,
         width: "90%"
+    },
+    link_text: {
+        color:"white",
+        fontSize:20,
+        textAlign:"center"
     }
 })
 export default styles;

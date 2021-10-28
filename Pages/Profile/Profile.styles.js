@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     display:"flex",
     justifyContent:"flex-end",
     flexDirection:"row",
-    marginTop:20,
+    marginTop:30,
     marginRight:30,
     width: "100%"
   },
