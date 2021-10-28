@@ -6,7 +6,8 @@ export const styles = {
         display:"flex",
         flexDirection:"column",
         justifyContent:"center",
-        alignItems:"center"
+        alignItems:"center",
+        backgroundColor:"white"
     },
     text: {
         marginTop: 20,

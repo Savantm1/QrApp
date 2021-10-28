@@ -24,7 +24,7 @@ const CalendarComponent = (props) => {
         'Декабрь',
         ],
         dayNames: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-        today: 'Сегодня',
+        today: '',
         year: '', // letter behind year number -> 2020{year}
       }
 
@@ -69,10 +69,11 @@ const CalendarComponent = (props) => {
             <Calendar
                 locale={CUSTOM_LOCALE}
                 initialNumToRender={2}
-                onChange={({ startDate, endDate }) =>{ monthData.start_date = startDate;monthData.end_date = endDate;}}
+                
+                onChange={({ startDate, endDate }) =>{ monthData.start_date = startDate;monthData.end_date = endDate}}
                 style={{
                 selectedBetweenDayBackgroundTextColor: '#b8cfbe' ,
-                selectedDayBackgroundColor:"#5DB075"
+                selectedDayBackgroundColor:"#5DB075",
                 }}
             />
             </View>
@@ -82,7 +83,6 @@ const CalendarComponent = (props) => {
           </View>
         </View>
       </Modal>
-
 
     )
 }

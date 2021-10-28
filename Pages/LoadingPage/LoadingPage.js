@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  Linking,View,Image
+  Text,View,Image
 } from 'react-native';
 import styles from "./LoadingPage.styles";
 

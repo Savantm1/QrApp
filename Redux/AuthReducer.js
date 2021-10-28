@@ -41,8 +41,7 @@ export const authSlice = createSlice({
         ChangeNetworkStatus(state,action) {
 
             state.networkStatus = action.payload;
-        }
-
+        },
     },
     extraReducers: {
         [getProfileData.fulfilled]: (state, action) => {

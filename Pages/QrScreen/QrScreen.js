@@ -1,66 +1,97 @@
 'use strict';
 import React, { Component, useState} from 'react';
-import { Alert, Text } from 'react-native';
+import { ActivityIndicator, Alert, Text, View } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SuccessPage from '../SuccessPage/SuccessPage';
 import styles from "./QrScreen.styles"
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ChangeLoading } from '../../Redux/QRScreenReducer';
 
-const QrScreen = ({navigation}) => {
 
-    const uid = useSelector(state => state.auth.personData.uid);
-    const EmployeeName = useSelector(state => state.auth.personData.employeeName);
-    let onSuccess = async (e) => {
+const QrScreen = (props) => {
+  const uid = useSelector(state => state.auth.personData.uid);
+  const EmployeeName = useSelector(state => state.auth.personData.employeeName);
+  let dispatch = useDispatch();
+
+  let onSuccess = async (e) => {
         try {
+           dispatch(ChangeLoading(true));
             let link = `${e.data}?uid=${uid}`;
             let response = await fetch(link,{
                 method: 'GET'
             })
             let personData = await response.json();
-            await navigation.navigate({
-                name: "SuccessPage",
-                params: {
-                    ...personData,
-                }
+            dispatch(ChangeLoading(false));
+            props.navigation.navigate({
+              name: "SuccessPage",
+              params: {
+                ...personData
+              }
             });
 
         } catch (error) {
-            Alert.alert("Ошибка", error.toString());
+            dispatch(ChangeLoading(false));
+            let textError = error.toString();
+            if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
+              textError = "Ошибка интернет-соединения. Повторите попытку."
+            };
+            Alert.alert("Ошибка", textError,
+            [{text:"OK",
+              onPress:() => {props.scanner.reactivate()}
+          }]);
         }
     };
-
+    const loading = useSelector(state => state.qrscreen.loading);
 
     return (
       <QRCodeScanner
-        reactivate={true}
-        reactivateTimeout={3000}
+        cameraStyle={styles.camera}
+        containerStyle={styles.container}
+        topViewStyle={styles.topViewStyle}
+        bottomViewStyle={styles.bottomViewStyle}
+        cameraContainerStyle={styles.camera_container}
+        fadeIn={false}
+        ref={(node) => { props.setScanner(node) }}
         flashMode={RNCamera.Constants.FlashMode.auto}
         onRead={onSuccess}
         topContent={
-          <Text style={styles.centerText}>
+          <>
+            <Text style={styles.text}>
               {EmployeeName}
-          </Text>
+            </Text>
+          </>
         }
         bottomContent={
-            <Text style={styles.bottomText}>
-                Наведите устройство на QR-код
+          loading === false  ?
+            (<Text style={styles.text}>
+              Наведите устройство на QR-код
+            </Text>) :
+            (<View style={{display:"flex",alignItems:"center",justifyContent:"center",flex:1}}>
+            <ActivityIndicator size="large" color="#5DB075" />
+            <Text style={styles.text}>
+              Отправляем данные...
             </Text>
+            </View>)
         }
       /> 
     );
 }
 
   const QRStack = createNativeStackNavigator();
-
   function QRStackScreen() {
-    return (
-      <QRStack.Navigator screenOptions={{headerShown:false}} >
-        <QRStack.Screen name="QrScreen" component={QrScreen} />
-        <QRStack.Screen name="SuccessPage" component={SuccessPage} />
-      </QRStack.Navigator>
-    );
+    const [scanner, setScanner] = useState();
+      return (
+        <QRStack.Navigator screenOptions={{headerShown:false}} >
+          <QRStack.Screen name="QrScreen">
+            {props => <QrScreen {...props} scanner = {scanner} setScanner={setScanner} />}
+          </QRStack.Screen>
+          <QRStack.Screen name="SuccessPage">
+            {props => <SuccessPage {...props} scanner = {scanner} setScanner={setScanner} />}
+          </QRStack.Screen>
+        </QRStack.Navigator>
+      );
   }
 
 export default QRStackScreen;

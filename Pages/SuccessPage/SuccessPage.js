@@ -1,22 +1,29 @@
 import { View,Text,TouchableOpacity } from 'react-native';
 import React from 'react';
 import styles from "./SuccessPage.styles";
+import { useDispatch } from 'react-redux';
+import { ChangeLoading } from '../../Redux/QRScreenReducer';
 
-const SuccessPage = ({navigation,route}) => {
-
+const SuccessPage = (props) => {
+    const dispatch = useDispatch();
     return (
         <View style={styles.container}>
             <View style={styles.block}>
-                <Text style={styles.title}>{route.params.title}</Text>
+                <Text style={styles.title}>{props.route.params.title}</Text>
                 <Text style={styles.text}>Объект:</Text>
-                <Text style={styles.text}>{route.params.objectName}</Text>
+                <Text style={styles.text}>{props.route.params.objectName}</Text>
                 <Text style={styles.text}>Время отметки:</Text>
-                <Text style={styles.text}>{route.params.datetime}</Text>
+                <Text style={styles.text}>{props.route.params.datetime}</Text>
                 <Text style={styles.text}>ФИО:</Text>
-                <Text style={styles.text}>{route.params.employeeName}</Text>
+                <Text style={styles.text}>{props.route.params.employeeName}</Text>
                 <TouchableOpacity
                     style={styles.btn}
-                    onPress={() => {navigation.navigate("QrScreen") }}
+                    onPress={() => {
+                        dispatch(ChangeLoading(false));
+                        props.scanner.reactivate();
+                        props.navigation.navigate("QrScreen");
+                    }
+                }
                 >
                     <Text style={{color:"white"}}  >Закрыть</Text>
                 </TouchableOpacity>

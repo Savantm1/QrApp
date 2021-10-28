@@ -18,8 +18,12 @@ const API = {
             });
             let personName = await response.json();
             return personName.employeeName;
-        } catch(e) {
-            Alert.alert(Ошибка,e.toString());
+        } catch(error) {
+            let textError = error.toString();
+            if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
+              textError = "Ошибка интернет-соединения. Повторите попытку."
+            };
+            Alert.alert(Ошибка,textError);
         }
        
     },
@@ -39,8 +43,12 @@ const API = {
             });
             let historyData = await response.json();
             return historyData;
-        } catch(e) {
-            Alert.alert("Ошибка",error.toString());
+        } catch(error) {
+            let textError = error.toString();
+            if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
+              textError = "Ошибка интернет-соединения. Повторите попытку."
+            };
+            Alert.alert(Ошибка,textError);
         }
         },
        async getHistoryDayData (data) {
@@ -59,8 +67,12 @@ const API = {
             let historyDayData = await response.json();
            
             return historyDayData;
-        } catch(e) {
-            Alert.alert("Ошибка",error.toString());
+        } catch(error) {
+            let textError = error.toString();
+            if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
+              textError = "Ошибка интернет-соединения. Повторите попытку."
+            };
+            Alert.alert(Ошибка,textError);
         }
         },
 
@@ -79,7 +91,11 @@ const API = {
                 let ProfileData = await response.json();
                 return ProfileData;
             } catch (error) {
-                Alert.alert("Ошибка",error.toString());
+                let textError = error.toString();
+                if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
+                  textError = "Ошибка интернет-соединения. Повторите попытку."
+                };
+                Alert.alert(Ошибка,textError);
             }
         },
 
@@ -98,7 +114,11 @@ const API = {
                 let Data = await response.json();
                 return Data;
             } catch (error) {
-                Alert.alert(Ошибка,error.toString());
+                let textError = error.toString();
+                if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
+                  textError = "Ошибка соединения c сервером. Повторите попытку."
+                };
+                Alert.alert(Ошибка,textError);
             }
         },
 
