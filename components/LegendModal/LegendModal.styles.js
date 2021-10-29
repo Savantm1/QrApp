@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     },
     error_text: {
       fontSize:20,
-      color:"red"
     },
     title_day: {
       fontSize: 20,
