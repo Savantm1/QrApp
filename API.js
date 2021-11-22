@@ -1,4 +1,4 @@
-import { Alert } from "react-native";
+import { Alert, Linking } from "react-native";
 import {SERVER_ADRESS, HASH_KEY} from "@env"
 import { getProfileData } from "./Redux/AuthReducer";
 
@@ -85,10 +85,28 @@ const API = {
                     },
                     body: JSON.stringify({
                         ...data,
-                        verifyHash: HASH_KEY
+                        verifyHash: HASH_KEY,
+                        version:"1"
                     }),
                 });
                 let ProfileData = await response.json();
+                if(ProfileData.error){
+                    Alert.alert(
+                        ProfileData.error.title.toString(),
+                        ProfileData.error.text.toString(),
+                        [
+                            {
+                                text: "Скачать",
+                                onPress: () => Linking.openURL("https://qr.st-ing.com/public/apk/QRApp_v1.0.0.apk"), 
+                                style: "cancel",
+                            },
+                            {
+                                text: "Закрыть",
+                                style: "cancel",
+                            },
+                        ]
+                        );
+                }
                 return ProfileData;
             } catch (error) {
                 let textError = error.toString();

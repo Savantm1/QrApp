@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import NavTabs from './components/NavTabs/NavTabs';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider} from 'react-redux';
 import store from "./Redux/redux-store";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ChangeNetworkStatus, getProfileData, Hydrate } from './Redux/AuthReducer';
+import { getProfileData, Hydrate } from './Redux/AuthReducer';
 import { getUniqueId } from 'react-native-device-info';
 import NetworkVerifyStatusComponent from './components/NetworkVerifyStatusComponent/NetworkVerifyStatusComponent';
-
 
 const getDataAsyncStorage = async () => {
   try {
@@ -28,9 +26,9 @@ const getDataAsyncStorage = async () => {
       let DeviceUniqueId = getUniqueId();
       let uniqueObject = {
         uid: persistedPersonData.uid,
-        phoneCode: DeviceUniqueId
+        phoneCode: DeviceUniqueId,
       }
-        store.dispatch(getProfileData(uniqueObject));
+      store.dispatch(getProfileData(uniqueObject));
     } else {
       store.dispatch(Hydrate(phoneSaveState));
     }

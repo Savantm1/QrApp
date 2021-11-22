@@ -22,10 +22,7 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     link: {
-<<<<<<< Updated upstream
-        backgroundColor: "#5db075",
-=======
->>>>>>> Stashed changes
+
         borderRadius: 30,
         color:"white",
         backgroundColor:"#5db075",

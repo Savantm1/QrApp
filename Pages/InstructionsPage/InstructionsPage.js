@@ -24,13 +24,9 @@ const InstructionsPage = (props) => {
 
     return (
       <View style={styles.link}>
-<<<<<<< Updated upstream
         <TouchableOpacity  onPress={handlePress}>
           <Text style={styles.link_text}>{children}</Text>
-          </TouchableOpacity>
-=======
-        <Button title={children} color="#fff" onPress={handlePress} />
->>>>>>> Stashed changes
+        </TouchableOpacity>
       </View>
     )
   }

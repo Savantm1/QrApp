@@ -18,24 +18,57 @@ const QrScreen = (props) => {
   let onSuccess = async (e) => {
         try {
            dispatch(ChangeLoading(true));
-            let link = `${e.data}?uid=${uid}`;
+            let link = `${e.data}&uid=${uid}&version=1`;
             let response = await fetch(link,{
                 method: 'GET'
             })
             let personData = await response.json();
-            dispatch(ChangeLoading(false));
-            props.navigation.navigate({
-              name: "SuccessPage",
-              params: {
-                ...personData
-              }
-            });
+            console.log(personData);
+            if(personData.status ==="success"){
+              dispatch(ChangeLoading(false));
+              props.navigation.navigate({
+                name: "SuccessPage",
+                params: {
+                  ...personData
+                }
+              });
+            } 
+            else if(personData.status ==="version"){
+              dispatch(ChangeLoading(false));
+              Alert.alert(
+                personData.title,
+                personData.text,
+                [
+                    {
+                        text: "Скачать",
+                        onPress: () =>{
+                          props.scanner.reactivate();
+                          Linking.openURL("https://qr.st-ing.com/public/apk/QRApp_v1.0.0.apk");
+                        } , 
+                        style: "cancel",
+                    },
+                    // {
+                    //     text: "Закрыть",
+                    //     onPress:() => {props.scanner.reactivate()},
+                    //     style: "cancel",
+                    // },
+                ]
+                )
+            } else {
+              dispatch(ChangeLoading(false));
+              Alert.alert(personData.title, personData.text,
+              [{text:"Закрыть",
+                onPress:() => {props.scanner.reactivate()},
+                style: "cancel",
+            }]);
+            }
 
         } catch (error) {
             dispatch(ChangeLoading(false));
             let textError = error.toString();
+            console.log(error);
             if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
-              textError = "Ошибка интернет-соединения. Повторите попытку."
+              textError = "Ошибка соединения c сервером. Повторите попытку."
             };
             Alert.alert("Ошибка", textError,
             [{text:"OK",
