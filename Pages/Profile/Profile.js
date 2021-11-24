@@ -1,28 +1,43 @@
 import React, { useRef, useState } from 'react';
 import styles from './Profile.styles.js';
-import { TouchableOpacity, ScrollView, Text, View, Image, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, ScrollView, Text, View, Image, ActivityIndicator, Platform } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHoursPerMonth, getProfileData } from '../../Redux/AuthReducer.js';
-import { getUniqueId } from 'react-native-device-info';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MonthSelector from '../../components/MonthSelector/MonthSelector.js';
 import { Picker as SelectPicker } from '@react-native-picker/picker';
 import moment from 'moment';
 import 'moment/locale/ru';
 
+
+
 const Profile = ({ navigation }) => {
+
     const dispatch = useDispatch();
     // относится к селекту
     let currentMonth = moment(new Date()).format("MMMM");
     const [selectedMonth, setSelectedMonth] = useState(currentMonth);
-    const pickerRef = useRef();
 
-    function open() {
-        pickerRef.current.focus();
+    // IOS
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const pickerRef = useRef();
+    function open() { 
+        if(Platform.OS ==='android'){
+            pickerRef.current.focus();
+        } else {
+            setModalVisible(!modalVisible);
+        }
     }
 
     function close() {
         pickerRef.current.blur();
+    }
+
+    let ChangeValueMonth = async(itemValue, itemIndex) => {
+            await setSelectedMonth(itemValue);
+            sendObj.month = itemValue;
+            dispatch(getHoursPerMonth(sendObj));
     }
     // ======================
     const data = useSelector(state => state.auth.personData);
@@ -31,7 +46,7 @@ const Profile = ({ navigation }) => {
         value: data.totalTime,
         uid: data.uid
     }
-    console.log(sendObj);
+
 
     const loading = useSelector(state => state.auth.loading);
 
@@ -83,12 +98,7 @@ const Profile = ({ navigation }) => {
                                                 selectedValue={selectedMonth}
                                                 style={styles.select_container}
                                                 dropdownIcon={false}
-                                                onValueChange={async (itemValue, itemIndex) => {
-                                                    await setSelectedMonth(itemValue);
-                                                    sendObj.month = itemValue;
-                                                    dispatch(getHoursPerMonth(sendObj));
-                                                }
-                                                }
+                                                onValueChange={(itemValue, itemIndex)=>ChangeValueMonth(itemValue, itemIndex)}
                                             >
                                                 <SelectPicker.Item style={styles.item} label="Январь" value="Январь" />
                                                 <SelectPicker.Item label="Февраль" value="Февраль" />
@@ -118,7 +128,12 @@ const Profile = ({ navigation }) => {
                         </View>
                     </View>
                     {/* селект с месяцами */}
-
+                    <MonthSelector 
+                        selectedMonth={selectedMonth} 
+                        modalVisible={modalVisible}
+                        setModalVisible={setModalVisible}
+                        
+                    />
                 </View>
             </ScrollView>
 
