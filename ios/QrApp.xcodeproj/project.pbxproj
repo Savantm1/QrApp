@@ -488,8 +488,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Anton Savelev (Z6N2Q8YYJV)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2TG593SRS5;
+				DEVELOPMENT_TEAM = TNZ5RS73WH;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = QrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -501,8 +503,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "react-mobile.QrApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qr.st-ing.stiqr";
 				PRODUCT_NAME = QrApp;
+				PROVISIONING_PROFILE_SPECIFIER = "sti qr test";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -515,8 +518,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development: Anton Savelev (Z6N2Q8YYJV)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2TG593SRS5;
+				DEVELOPMENT_TEAM = TNZ5RS73WH;
 				INFOPLIST_FILE = QrApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -527,8 +532,9 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "react-mobile.QrApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.qr.st-ing.stiqr";
 				PRODUCT_NAME = QrApp;
+				PROVISIONING_PROFILE_SPECIFIER = "sti qr test";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -563,7 +569,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Anton Savelev (Z6N2Q8YYJV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Anton Savelev (Z6N2Q8YYJV)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -628,7 +636,9 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development: Anton Savelev (Z6N2Q8YYJV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development: Anton Savelev (Z6N2Q8YYJV)";
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

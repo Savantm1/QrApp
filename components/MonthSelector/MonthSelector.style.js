@@ -5,9 +5,12 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "flex-end",
         alignItems: "center",
-        marginTop: 200,
+        marginTop: 300,
         marginBottom:0
 
+      },
+      ios_picker: {
+        width:"100%"
       },
       modalView: {
         borderTopWidth:2,

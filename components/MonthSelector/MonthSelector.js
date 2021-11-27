@@ -2,7 +2,7 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import React, { useState, useCallback } from 'react';
-import { View, Modal, Pressable } from 'react-native';
+import { View, Modal, Pressable, Text } from 'react-native';
 import styles from './MonthSelector.style';
 import {Picker as SelectPicker} from '@react-native-picker/picker';
 import { useRef } from 'react';
@@ -35,11 +35,15 @@ const MonthSelector = (props) => {
                 <SelectPicker
                     ref={pickerRef}
                     selectedValue={props.selectedMonth}
-                    style={styles.select_container}
+                    style={styles.ios_picker}
                     dropdownIcon={false}
-                    onValueChange={(itemValue,itemIndex)=>props.ChangeValueMonth(itemValue,itemIndex)}
+                    onValueChange={(itemValue,itemIndex)=>{
+                        props.ChangeValueMonth(itemValue,itemIndex);
+                        props.setModalVisible(!props.modalVisible);
+                    }
+                    }
                 >
-                    <SelectPicker.Item style={styles.item} label="Январь" value="Январь" />
+                    <SelectPicker.Item label="Январь" value="Январь" />
                     <SelectPicker.Item label="Февраль" value="Февраль" />
                     <SelectPicker.Item label="Март" value="Март" />
                     <SelectPicker.Item label="Апрель" value="Апрель" />

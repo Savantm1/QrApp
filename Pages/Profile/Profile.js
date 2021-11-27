@@ -132,7 +132,7 @@ const Profile = ({ navigation }) => {
                         selectedMonth={selectedMonth} 
                         modalVisible={modalVisible}
                         setModalVisible={setModalVisible}
-                        
+                        ChangeValueMonth={ChangeValueMonth}
                     />
                 </View>
             </ScrollView>
