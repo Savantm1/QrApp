@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>QrApp.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>1</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>82AEC03C9C39A2F17C335E25E46592F57612C702</string>
+				<key>dateExpires</key>
+				<string>26.11.2022</string>
+				<key>type</key>
+				<string>Apple Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>arm64</string>
+					</array>
+					<key>buildNumber</key>
+					<string>1</string>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>82AEC03C9C39A2F17C335E25E46592F57612C702</string>
+						<key>dateExpires</key>
+						<string>26.11.2022</string>
+						<key>type</key>
+						<string>Apple Development</string>
+					</dict>
+					<key>name</key>
+					<string>OpenSSL.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>TNZ5RS73WH</string>
+						<key>name</key>
+						<string>Anton Savelev</string>
+					</dict>
+					<key>versionNumber</key>
+					<string>1.1.180</string>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>TNZ5RS73WH.com.qr.st-ing.stiqr</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>TNZ5RS73WH</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>TNZ5RS73WH.com.qr.st-ing.stiqr</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>QrApp.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>3fb5462a-30df-44d8-bd15-c5b1f526da23</string>
+				<key>dateExpires</key>
+				<string>26.11.2022</string>
+				<key>name</key>
+				<string>sti qr test</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>TNZ5RS73WH</string>
+				<key>name</key>
+				<string>Anton Savelev</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

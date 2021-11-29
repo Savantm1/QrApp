@@ -21,7 +21,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -39,16 +39,32 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>App requires access to your Bluetooth Always </string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>App requires access to your Bluetooth to monitor the connection status</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>App requires access to your Calendar to view the hours worked on a specific day / period</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Your message to user when the camera is accessed for the first time</string>
+	<string>App requires access to your Camera to scan QR-code and send your profile data</string>
+	<key>NSContactsUsageDescription</key>
+	<string>App requires access to your Contacts </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>App requires access to your Location then in Use</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Your message to user when the microphone is accessed for the first time</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Your message to user when the photo library is accessed for the first time</string>
+	<string>App requires access to your Microphone to use voice search</string>
+	<key>NSMotionUsageDescription</key>
+	<string>App requires access to your Motion</string>
+	<key>NSSiriUsageDescription</key>
+	<string>App requires access to your Siri</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>App requires access to your Speech Recognition</string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>App requires access to your Music</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>App requires access to your Apple Music</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
