@@ -1,5 +1,5 @@
 import { Alert, Linking } from "react-native";
-import {SERVER_ADRESS, HASH_KEY} from "@env"
+import {SERVER_ADRESS, HASH_KEY} from "@env";
 import { getProfileData } from "./Redux/AuthReducer";
 
 
@@ -23,7 +23,7 @@ const API = {
             if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
               textError = "Ошибка интернет-соединения. Повторите попытку."
             };
-            Alert.alert(Ошибка,textError);
+            Alert.alert("Ошибка",textError);
         }
        
     },
@@ -48,7 +48,7 @@ const API = {
             if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
               textError = "Ошибка интернет-соединения. Повторите попытку."
             };
-            Alert.alert(Ошибка,textError);
+            Alert.alert("Ошибка",textError);
         }
         },
        async getHistoryDayData (data) {
@@ -72,7 +72,7 @@ const API = {
             if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
               textError = "Ошибка интернет-соединения. Повторите попытку."
             };
-            Alert.alert(Ошибка,textError);
+            Alert.alert("Ошибка",textError);
         }
         },
 
@@ -113,7 +113,7 @@ const API = {
                 if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
                   textError = "Ошибка интернет-соединения. Повторите попытку."
                 };
-                Alert.alert(Ошибка,textError);
+                Alert.alert("Ошибка",textError);
             }
         },
 
@@ -136,7 +136,7 @@ const API = {
                 if(textError.indexOf("SyntaxError: JSON Parse error: Unrecognized token '<'") > -1) { 
                   textError = "Ошибка соединения c сервером. Повторите попытку."
                 };
-                Alert.alert(Ошибка,textError);
+                Alert.alert("Ошибка",textError);
             }
         },
 
