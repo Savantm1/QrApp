@@ -32,7 +32,6 @@ const ModalComponent = (props) => {
         transparent={true}
         visible={props.modalVisible}
         onRequestClose={() => {
-          // Alert.alert("Modal has been closed.");
           props.setModalVisible(!props.modalVisible);
         }}
       >
@@ -45,6 +44,7 @@ const ModalComponent = (props) => {
                 <MaterialCommunityIcons name="close" size={30} />
               </Pressable>
             </View>
+                  {props.children}
                     {Header}
                     <HistoryListDay/>
           </View>

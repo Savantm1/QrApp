@@ -1,6 +1,6 @@
 'use strict';
 import React, { Component, useState} from 'react';
-import { ActivityIndicator, Alert, Text, View } from 'react-native';
+import { ActivityIndicator, Alert, Text, View, Linking, Platform } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -14,6 +14,7 @@ const QrScreen = (props) => {
   const uid = useSelector(state => state.auth.personData.uid);
   const EmployeeName = useSelector(state => state.auth.personData.employeeName);
   let dispatch = useDispatch();
+
 
   let onSuccess = async (e) => {
         try {
@@ -34,26 +35,43 @@ const QrScreen = (props) => {
               });
             } 
             else if(personData.status ==="version"){
+
               dispatch(ChangeLoading(false));
-              Alert.alert(
-                personData.title,
-                personData.text,
-                [
-                    {
-                        text: "Скачать",
-                        onPress: () =>{
-                          props.scanner.reactivate();
-                          Linking.openURL("https://qr.st-ing.com/public/apk/QRApp_v1.0.0.apk");
-                        } , 
-                        style: "cancel",
-                    },
-                    // {
-                    //     text: "Закрыть",
-                    //     onPress:() => {props.scanner.reactivate()},
-                    //     style: "cancel",
-                    // },
-                ]
-                )
+              if(Platform.OS !== "android"){
+
+                //ANDROID
+                Alert.alert(
+                  personData.title,
+                  personData.text,
+                  [
+                      {
+                          text: "Скачать",
+                          onPress: () =>{
+                            props.scanner.reactivate();
+                            Linking.openURL("https://qr.st-ing.com/public/apk/STI-QR-installer.apk");
+                          } , 
+                          style: "cancel",
+                      },
+                  ]
+                  )
+              } else {
+
+                // APPLE
+                 Alert.alert(
+                  personData.title,
+                  personData.text,
+                  [
+                      {
+                          text: "Закрыть",
+                          onPress: () =>{
+                            props.scanner.reactivate();
+                            // Linking.openURL("https://qr.st-ing.com/public/apk/STI-QR-installer.apk");
+                          } , 
+                          style: "cancel",
+                      },
+                  ]
+                  )
+              }
             } else {
               dispatch(ChangeLoading(false));
               Alert.alert(personData.title, personData.text,
@@ -77,6 +95,8 @@ const QrScreen = (props) => {
         }
     };
     const loading = useSelector(state => state.qrscreen.loading);
+
+
 
     return (
       <QRCodeScanner
@@ -120,8 +140,8 @@ const QrScreen = (props) => {
           <QRStack.Screen name="QrScreen">
             {props => <QrScreen {...props} scanner = {scanner} setScanner={setScanner} />}
           </QRStack.Screen>
-          <QRStack.Screen name="SuccessPage">
-            {props => <SuccessPage {...props} scanner = {scanner} setScanner={setScanner} />}
+          <QRStack.Screen name="SuccessPage" options={{tabBarStyle: { display: 'none' }}} >
+            {props => <SuccessPage {...props} scanner = {scanner} setScanner={setScanner}  />}
           </QRStack.Screen>
         </QRStack.Navigator>
       );

@@ -1,7 +1,6 @@
-import { Alert, Linking } from "react-native";
-import {SERVER_ADRESS, HASH_KEY} from "@env";
+import { Alert, Linking, Platform } from "react-native";
+import {SERVER_ADRESS, HASH_KEY,INSTALLER_ANDROID,INSTALLER_IOS} from "@env";
 import { getProfileData } from "./Redux/AuthReducer";
-
 
 const API = {
     async getPersonName(id) {
@@ -78,7 +77,7 @@ const API = {
 
         async getPersonData (data) {
             try {
-                let response = await fetch(`${SERVER_ADRESS}/verify`, {
+                let response = await fetch(`${SERVER_ADRESS}/testverify`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8'
@@ -90,14 +89,39 @@ const API = {
                     }),
                 });
                 let ProfileData = await response.json();
+                console.log("verify",ProfileData)
+
                 if(ProfileData.error){
+
+                    //ANDROID
+                    if(Platform.OS === "android"){
                     Alert.alert(
                         ProfileData.error.title.toString(),
                         ProfileData.error.text.toString(),
                         [
                             {
                                 text: "Скачать",
-                                onPress: () => Linking.openURL("https://qr.st-ing.com/public/apk/QRApp_v1.0.0.apk"), 
+                                onPress: () => Linking.openURL("https://qr.st-ing.com/public/apk/STI-QR-installer.apk"), 
+                                style: "cancel",
+                            },
+                            {
+                                text: "Закрыть",
+                                style: "cancel",
+                            },
+                        ]
+                        );
+                
+                
+                }else{
+
+                    //IOS
+                    Alert.alert(
+                        ProfileData.error.title.toString(),
+                        ProfileData.error.text.toString(),
+                        [
+                            {
+                                text: "Скачать",
+                                onPress: () => Linking.openURL("https://www.google.com"), 
                                 style: "cancel",
                             },
                             {
@@ -107,6 +131,8 @@ const API = {
                         ]
                         );
                 }
+
+            }
                 return ProfileData;
             } catch (error) {
                 let textError = error.toString();

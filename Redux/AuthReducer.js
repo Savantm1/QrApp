@@ -20,10 +20,13 @@ export const authSlice = createSlice({
     initialState: {
         status:0,
         networkStatus:false,
+        errorTitle:"",
         errorMessage:"",
+        personStatus: true,
         personData:{
             uid:"",
-            name:''
+            name:'',
+            
         }
     },
     reducers: {
@@ -46,13 +49,16 @@ export const authSlice = createSlice({
     extraReducers: {
         [getProfileData.fulfilled]: (state, action) => {
             state.loading = false;
-
-            if(action.payload.person_data.employeeName){
+            if(action.payload.status === false){
+                state.errorMessage = action.payload.message;
+                state.errorTitle = action.payload.title;
+                state.personStatus = false;
+            }else if(action.payload.person_data.employeeName){
                 state.personData.uid= action.meta.arg.uid;
                 state.personData = action.payload.person_data;
                 state.legend = action.payload.legend;
                 state.status = true;
-            }else {
+            }else  {
                 state.errorMessage = action.payload.message;
             }
           },

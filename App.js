@@ -6,6 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getProfileData, Hydrate } from './Redux/AuthReducer';
 import { getUniqueId } from 'react-native-device-info';
 import NetworkVerifyStatusComponent from './components/NetworkVerifyStatusComponent/NetworkVerifyStatusComponent';
+import PersonStatusVerifyComponent from './components/PersonStatusVerifyComponent/PersonStatusVerifyComponent';
 
 const getDataAsyncStorage = async () => {
   try {
@@ -65,7 +66,7 @@ export default function App() {
       return (
         <Provider store={store}>
           <NavigationContainer>
-            <NetworkVerifyStatusComponent/>
+            <PersonStatusVerifyComponent removeFew={removeFew}/>
           </NavigationContainer>
         </Provider>
       )

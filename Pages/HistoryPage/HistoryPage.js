@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { View,Text,TouchableOpacity, ActivityIndicator} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
-
 import HistoryList from '../../components/HistoryList/HistoryList';
 import LegendModal from '../../components/LegendModal/LegendModal';
 import ModalComponent from '../../components/ModalComponent/ModalComponent';
@@ -22,7 +21,6 @@ import styles from "./HistoryPage.styles";
     const data = useSelector(state=>state.history.historyData);
     const loading = useSelector(state => state.history.loading);
 
-    
     let content = totalTime ? 
     <>
      <Text style={styles.title}> В выбранный период Вы отработали:</Text>

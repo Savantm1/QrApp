@@ -1,11 +1,27 @@
-import { View,Text,TouchableOpacity } from 'react-native';
-import React from 'react';
+import { View,Text,TouchableOpacity,BackHandler, Alert} from 'react-native';
+import React,{useEffect} from 'react';
 import styles from "./SuccessPage.styles";
 import { useDispatch } from 'react-redux';
 import { ChangeLoading } from '../../Redux/QRScreenReducer';
 
 const SuccessPage = (props) => {
     const dispatch = useDispatch();
+
+    //Обработчик на жест назад
+    const backAction = () => {
+        props.scanner.reactivate();
+        props.navigation.navigate("QrScreen");
+        return true;
+    };
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", backAction);
+
+    return () =>
+      BackHandler.removeEventListener("hardwareBackPress", backAction);
+  }, []);
+
+  
     return (
         <View style={styles.container}>
             <View style={styles.block}>

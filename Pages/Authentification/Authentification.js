@@ -39,19 +39,19 @@ const Authentification = ({ navigation }) => {
       }
       let result = await API.getPersonData(uniqueObject);
       dispatch(getProfileData(uniqueObject));
-      if (result.message) {
-        clearInputs();
-        navigation.navigate({
-          name: "Error",
-          params: {
-            message: result.message,
-            title: result.title
-          }
-        })
+      // if (result.message) {
+      //   clearInputs();
+      //   navigation.navigate({
+      //     name: "Error",
+      //     params: {
+      //       message: result.message,
+      //       title: result.title
+      //     }
+      //   })
 
-      } else {
+      // } else {
         dispatch(Authorization({ result, userId }));
-      }
+      // }
     } else {
       clearInputs();
       Alert.alert("Некорректный ввод", "Ввёденные данные не совпадают. Повторите еще раз.")
@@ -103,7 +103,7 @@ function AuthentificationStackScreen() {
   return (
     <AuthentificationStack.Navigator screenOptions={{ headerShown: false }}>
       <AuthentificationStack.Screen name="Authentification" component={Authentification} />
-      <AuthentificationStack.Screen name="Error" component={ErrorPage} />
+      {/* <AuthentificationStack.Screen name="Error" component={ErrorPage} /> */}
     </AuthentificationStack.Navigator>
   )
 }

@@ -50,7 +50,7 @@ const Profile = ({ navigation }) => {
 
     const loading = useSelector(state => state.auth.loading);
 
-    if (loading) {
+    if(loading) {
         return (
             <View style={styles.container_center}>
                 <ActivityIndicator size="large" color="#5DB075" />
@@ -136,7 +136,6 @@ const Profile = ({ navigation }) => {
                     />
                 </View>
             </ScrollView>
-
         );
     }
 };

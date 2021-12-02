@@ -13,7 +13,7 @@ import InstructionsPage from '../../Pages/InstructionsPage/InstructionsPage';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function NavTabs() {
+function NavTabs({ navigation }) {
   
   const status  = useSelector(state => state.auth.status);   
   let content;
@@ -29,20 +29,20 @@ function NavTabs() {
                 <Tab.Screen name="QR" component={QRStackScreen}
                   options={{         
                     tabBarIcon: ({ color, size }) => (
-                      <MaterialCommunityIcons name="qrcode-scan" color={color} size={size} />
+                      <MaterialCommunityIcons name="qrcode-scan" color={color} size={size}  />
                       ),}} />
-                <Tab.Screen name="Profile" component={Profile}
+                <Tab.Screen name="Профиль" component={Profile}
                 options={{      
                   tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="account" color={color} size={size} />
                     ),}} />
-                <Tab.Screen name="History" component={HistoryPage}
+                <Tab.Screen name="История" component={HistoryPage}
                 options={{         
                   tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="history" color={color} size={size} />
                     ),}} />
-                <Tab.Screen name="Information" component={InstructionsPage}
-                options={{         
+                <Tab.Screen name="Информация" component={InstructionsPage} 
+                options={{        
                   tabBarIcon: ({ color, size }) => (
                     <MaterialCommunityIcons name="information" color={color} size={size} />
                     ),}} />
