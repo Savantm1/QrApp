@@ -77,7 +77,7 @@ const API = {
 
         async getPersonData (data) {
             try {
-                let response = await fetch(`${SERVER_ADRESS}/testverify`, {
+                let response = await fetch(`${SERVER_ADRESS}/verify`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json;charset=utf-8'
