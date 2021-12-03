@@ -18,9 +18,9 @@ const styles = {
 const PersonStatusVerifyComponent = (props) => {
 
     const PersonStatus = useSelector(state => state.auth.personStatus);
-    const loading = useSelector(state => state.auth.loading);
-
-    if(loading) {
+    const loading = useSelector(state => state.auth.verifyLoading);
+    console.log("LOADING",loading)
+    if(loading == true ) {
         return (
             <View style={styles.container_center}
             >
@@ -32,7 +32,10 @@ const PersonStatusVerifyComponent = (props) => {
                 return <NetworkVerifyStatusComponent/>
             } else {
                 
-                return <ErrorPage removeFew={props.removeFew}/>
+                return <ErrorPage 
+                removeFew={props.removeFew}
+                
+                />
             }
         
     }

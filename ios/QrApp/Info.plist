@@ -22,6 +22,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -39,6 +41,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>App requires access to your Apple Music</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>App requires access to your Bluetooth Always </string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
@@ -55,16 +59,12 @@
 	<string>App requires access to your Microphone to use voice search</string>
 	<key>NSMotionUsageDescription</key>
 	<string>App requires access to your Motion</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App requires access to your Photo Library Usage</string>
 	<key>NSSiriUsageDescription</key>
 	<string>App requires access to your Siri</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>App requires access to your Speech Recognition</string>
-	<key>kTCCServiceMediaLibrary</key>
-	<string>App requires access to your Music</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>App requires access to your Apple Music</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
@@ -97,5 +97,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>App requires access to your Music</string>
 </dict>
 </plist>

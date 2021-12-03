@@ -27,10 +27,11 @@ const ErrorPage = (props) => {
               <Image style={styles.image} source={require("../../assets/error.png")}/>
               <Text style={styles.text}>{errorMessage}</Text>
               <TouchableOpacity
-              style={styles.btn}
-              onPress={() => { props.removeFew()
-                               RNRestart.Restart()
-                              }
+                style={styles.btn}
+                onPress={() => { 
+                  // props.removeFew()
+                  RNRestart.Restart()
+                }
               } 
               >
               <Text style={{color:"white"}} >Попробовать еще раз</Text>

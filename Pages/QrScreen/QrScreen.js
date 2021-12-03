@@ -15,7 +15,6 @@ const QrScreen = (props) => {
   const EmployeeName = useSelector(state => state.auth.personData.employeeName);
   let dispatch = useDispatch();
 
-
   let onSuccess = async (e) => {
         try {
            dispatch(ChangeLoading(true));

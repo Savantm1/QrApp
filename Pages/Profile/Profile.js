@@ -60,7 +60,7 @@ const Profile = ({ navigation }) => {
         return (
             <ScrollView>
                 <View style={styles.container}>
-                    <View style={styles.refresh_container}>
+                    <View style={Platform.OS === "android" ? styles.refresh_container : styles.refresh_container_ios}>
                         <TouchableOpacity onPress={() => dispatch(getHoursPerMonth(sendObj))}>
                             <MaterialCommunityIcons name="refresh" color={"#5DB075"} size={40} />
                         </TouchableOpacity>

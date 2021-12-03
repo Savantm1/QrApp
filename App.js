@@ -67,6 +67,7 @@ export default function App() {
         <Provider store={store}>
           <NavigationContainer>
             <PersonStatusVerifyComponent removeFew={removeFew}/>
+            {/* <NetworkVerifyStatusComponent/> */}
           </NavigationContainer>
         </Provider>
       )

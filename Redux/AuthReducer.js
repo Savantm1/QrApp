@@ -15,11 +15,11 @@ export const getHoursPerMonth = createAsyncThunk(
     }
 )
 export const authSlice = createSlice({
-    loading:false,
     name: "person",
     initialState: {
+        verifyLoading: false,
         status:0,
-        networkStatus:false,
+        networkStatus: false,
         errorTitle:"",
         errorMessage:"",
         personStatus: true,
@@ -48,6 +48,8 @@ export const authSlice = createSlice({
     },
     extraReducers: {
         [getProfileData.fulfilled]: (state, action) => {
+            //изменение экрана загрузки для проверки статуса пользователя(уволен)
+            state.verifyLoading = false;
             state.loading = false;
             if(action.payload.status === false){
                 state.errorMessage = action.payload.message;
@@ -64,6 +66,7 @@ export const authSlice = createSlice({
           },
           [getProfileData.pending]: (state, action) => {
             state.loading = true;
+            state.verifyLoading = true;
           },
         [getHoursPerMonth.fulfilled]: (state,action) => {
             state.loading = false;

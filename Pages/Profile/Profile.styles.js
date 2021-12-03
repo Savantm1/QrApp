@@ -23,6 +23,14 @@ const styles = StyleSheet.create({
     marginRight:30,
     width: "100%"
   },
+  refresh_container_ios: {
+    display:"flex",
+    justifyContent:"flex-end",
+    flexDirection:"row",
+    marginTop:60,
+    marginRight:30,
+    width: "100%"
+  },
   title: {
     fontSize: 30,
     fontWeight: '600',
