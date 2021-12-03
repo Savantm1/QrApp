@@ -18,6 +18,7 @@ const ErrorPage = (props) => {
   // if(route){
   //   let message = route.params.message ? route.params.message : "Ошибка"
   //   let title = route.params.title ? route.params.title : ""
+  
   if(errorTitle !=="Доступ запрещен."){
 
     ErrorContent = () =>{
