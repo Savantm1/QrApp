@@ -116,14 +116,14 @@ const API = {
 
                     //IOS
                     Alert.alert(
-                        ProfileData.error.title.toString(),
-                        ProfileData.error.text.toString(),
+                        "Вышло обновление",
+                        "Зайдите в приложение TestFlight и обновите 'STI QR'",
                         [
-                            {
-                                text: "Скачать",
-                                onPress: () => Linking.openURL("https://www.google.com"), 
-                                style: "cancel",
-                            },
+                            // {
+                            //     text: "Скачать",
+                            //     onPress: () => Linking.openURL("https://www.google.com"), 
+                            //     style: "cancel",
+                            // },
                             {
                                 text: "Закрыть",
                                 style: "cancel",

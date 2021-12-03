@@ -37,7 +37,7 @@ const QrScreen = (props) => {
             else if(personData.status ==="version"){
 
               dispatch(ChangeLoading(false));
-              if(Platform.OS !== "android"){
+              if(Platform.OS === "android"){
 
                 //ANDROID
                 Alert.alert(
@@ -58,8 +58,8 @@ const QrScreen = (props) => {
 
                 // APPLE
                  Alert.alert(
-                  personData.title,
-                  personData.text,
+                  "Вышло обновление",
+                  "Зайдите в приложение TestFlight и обновите 'STI QR'",
                   [
                       {
                           text: "Закрыть",
