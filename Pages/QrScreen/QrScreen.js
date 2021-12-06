@@ -18,7 +18,7 @@ const QrScreen = (props) => {
   let onSuccess = async (e) => {
         try {
            dispatch(ChangeLoading(true));
-            let link = `${e.data}&uid=${uid}&version=1`;
+            let link = `${e.data}&uid=${uid}&version=2`;
             let response = await fetch(link,{
                 method: 'GET'
             })

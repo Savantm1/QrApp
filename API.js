@@ -85,11 +85,11 @@ const API = {
                     body: JSON.stringify({
                         ...data,
                         verifyHash: HASH_KEY,
-                        version:"1"
+                        version: "2"
                     }),
                 });
                 let ProfileData = await response.json();
-                console.log("verify",ProfileData)
+                // console.log("verify",ProfileData)
 
                 if(ProfileData.error){
 
@@ -117,7 +117,7 @@ const API = {
                     //IOS
                     Alert.alert(
                         "Вышло обновление",
-                        "Зайдите в приложение TestFlight и обновите 'STI QR'",
+                        "Зайдите в приложение TestFlight и обновите 'STI QR'. Необходимо обновить приложение до 10.12.21",
                         [
                             // {
                             //     text: "Скачать",
