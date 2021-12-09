@@ -85,54 +85,54 @@ const API = {
                     body: JSON.stringify({
                         ...data,
                         verifyHash: HASH_KEY,
-                        version: "2"
+                        // version: "2"
                     }),
                 });
                 let ProfileData = await response.json();
                 // console.log("verify",ProfileData)
 
-                if(ProfileData.error){
+            //     if(ProfileData.error){
 
-                    //ANDROID
-                    if(Platform.OS === "android"){
-                    Alert.alert(
-                        ProfileData.error.title.toString(),
-                        ProfileData.error.text.toString(),
-                        [
-                            {
-                                text: "Скачать",
-                                onPress: () => Linking.openURL("https://qr.st-ing.com/public/apk/STI-QR-installer.apk"), 
-                                style: "cancel",
-                            },
-                            {
-                                text: "Закрыть",
-                                style: "cancel",
-                            },
-                        ]
-                        );
+            //         //ANDROID
+            //         if(Platform.OS === "android"){
+            //         Alert.alert(
+            //             ProfileData.error.title.toString(),
+            //             ProfileData.error.text.toString(),
+            //             [
+            //                 {
+            //                     text: "Скачать",
+            //                     onPress: () => Linking.openURL("https://qr.st-ing.com/public/apk/STI-QR-installer.apk"), 
+            //                     style: "cancel",
+            //                 },
+            //                 {
+            //                     text: "Закрыть",
+            //                     style: "cancel",
+            //                 },
+            //             ]
+            //             );
                 
                 
-                }else{
+            //     }else{
 
-                    //IOS
-                    Alert.alert(
-                        "Вышло обновление",
-                        "Зайдите в приложение TestFlight и обновите 'STI QR'. Необходимо обновить приложение до 10.12.21",
-                        [
-                            // {
-                            //     text: "Скачать",
-                            //     onPress: () => Linking.openURL("https://www.google.com"), 
-                            //     style: "cancel",
-                            // },
-                            {
-                                text: "Закрыть",
-                                style: "cancel",
-                            },
-                        ]
-                        );
-                }
+            //         //IOS
+            //         Alert.alert(
+            //             "Вышло обновление",
+            //             "Зайдите в приложение TestFlight и обновите 'STI QR'. Необходимо обновить приложение до 10.12.21",
+            //             [
+            //                 // {
+            //                 //     text: "Скачать",
+            //                 //     onPress: () => Linking.openURL("https://www.google.com"), 
+            //                 //     style: "cancel",
+            //                 // },
+            //                 {
+            //                     text: "Закрыть",
+            //                     style: "cancel",
+            //                 },
+            //             ]
+            //             );
+            //     }
 
-            }
+            // }
                 return ProfileData;
             } catch (error) {
                 let textError = error.toString();
